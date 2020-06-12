@@ -15,9 +15,9 @@ If you find this code useful in you work, please cite:
 
 #### Summary of Our Work
 
-<img src='imgs/summary.png' width=512/> 
+<img src='imgs/particle-topologies.png' width=512/> 
 
-<img src='imgs/our_method.png' width=512/> 
+<img src='imgs/architecture.png' width=512/> 
 
 
 ## Getting Started
