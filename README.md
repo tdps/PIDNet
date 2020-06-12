@@ -119,10 +119,12 @@ python -u src/eval_test_set.py --init_weight=${ckpt_dir} |& tee logs/log_test.tx
 - The statistics will be prompted to screen and confusion matrix result will be saved to a png file here: `./figs/confusion_matrix.png`.
 
 ### Confusion Matrix, ROC Curve, and T-SNE Visualization
-<img src='imgs/confusion_matrix.png' width=1024/>
-<img src='imgs/roc.png' width=1024/>
-<img src='imgs/tsne.png' width=1024/>
-
+<p float="left">
+<img src='imgs/confusion_matrix.png' width=300/>
+<img src='imgs/roc.png' width=300/>
+<img src='imgs/tsne.png' width=300/>
+</p>
+  
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
