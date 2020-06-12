@@ -54,19 +54,38 @@ cd PIDNet
 Data needs to be arranged in the following format:
 
 ```python
-PIDNet                  # Path to main folder
-└── datasets            # Folder of all datasets
-      └── dataset_xxx   # Name of a dataset
-            |
-            ├── A       # High resolution images
-            |   ├── test
-            |   ├── train
-            |   └── val
-            |
-            └── B       # Low resolution images
-                ├── test
-                ├── train
-                └── val
+.
+├── dataset5d
+│   └── 1500sp_evts
+│       ├── electron-38323
+│       ├── muon-62190
+│       ├── pionminus-39144
+│       ├── pionzero-35674
+│       ├── proton-36793
+│       ├── test_files35k_5p.csv
+│       └── train_files35k_5p.csv
+└── PIDNet
+    ├── figs
+    │   └── confusion_matrix_pointnet.png
+    ├── logs
+    │   └── checkpoints
+    │       ├── checkpoint
+    │       ├── iter-102828.data-00000-of-00002
+    │       ├── iter-102828.data-00001-of-00002
+    │       └── iter-102828.index
+    ├── src
+    │   ├── dataset_utils.py
+    │   ├── eval_test_set.py
+    │   ├── eval_test_set_tsne.ipynb
+    │   ├── inference.py
+    │   ├── match_pred_momentum.ipynb
+    │   ├── model.py
+    │   ├── plot_pred_momentum.ipynb
+    │   ├── roc_curve.ipynb
+    │   ├── train.py
+    └── utils
+        ├── helpers.py
+        └── visualize.py
 
 
 ```
