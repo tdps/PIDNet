@@ -94,6 +94,13 @@ Data needs to be arranged in the following format:
 
 <img src='imgs/architecture.png' width=1024/>
 
+### Steps to reproduce the results
+
+1. Prepapare the data using the command: 'prepare_data/python prepare_fixedsp_data.py'
+2. Create a list of train and test files with the Jupyter notebook file prepare_data/generate_train_test_files.ipynb
+    1. Just sequentially run the code blocks in the notebook.
+3. Run the model in the pid_net folder: 'python src/train.py'
+
 ### Training
 
  To train a model:
@@ -121,8 +128,6 @@ CUDA_VISIBLE_DEVICES=0,1 python -u src/train.py |& tee logs/log_training_$(date 
 - To view training results and loss plots, run `python -m visdom.server` and click the URL <http://localhost:8097.>
 
 ### Pre-trained Models
-
-You can download our pretrained model [here](https://1drv.ms/u/s!AsXONMc_kIHJbhEIjkvPpnvxeCg?e=y6NfoA)
 
 - The pretrained model is saved at `./logs/checkpoints/`.
 
