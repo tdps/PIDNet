@@ -125,7 +125,7 @@ CUDA_VISIBLE_DEVICES=0,1 python -u src/train.py |& tee logs/log_training_$(date 
 ```
 
 - To see more intermediate results, check out  `./logs/checkpoints/`.
-- To view training results and loss plots, run `python -m visdom.server` and click the URL <http://localhost:8097.>
+- To view training results and loss plots, run `tensorboard --logdir logs/` and click the URL <http://localhost:6006.>
 
 ### Pre-trained Models
 
