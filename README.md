@@ -40,14 +40,14 @@ cd PIDNet
 - Tensorboard>=2.0.0
 - scipy
 
-- Install [Tensorflow](http://tensorflow.org) 2.0.0+ and other dependencies (e.g., torchvision, [visdom](https://github.com/facebookresearch/visdom) and [dominate](https://github.com/Knio/dominate)).
+- Install [Tensorflow](http://tensorflow.org) 2.0.0+ and other dependencies.
   - For pip users, please type the command `pip install -r requirements.txt`.
   - For Conda users, you can use an installation script `./scripts/conda_deps.sh`. Alternatively, you can create a new Conda environment using `conda env create -f environment.yml`.
 
 ### Dataset
 
 - Our dataset consists of particles generated in Monte Carlo simulations.
-- The data split we used can be downloaded [here](https://1drv.ms/u/s!AsXONMc_kIHJb1pqU_1CGv9RBXk?e=5xGbvI).
+- Place your dataset in `./dataset` folder and use the codes in `./prepapre_data` folder to pre-process.
 
 ### Dataset Organization
 
