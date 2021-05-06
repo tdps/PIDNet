@@ -6,12 +6,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 idx_lookup = {
-    'proton-position-Mom-20358':0
-    ,'piminus-position-Mom-39144':1
-    ,'eminus-position-Mom-52294':2
-    #,'kplus-position-Mom-50588'
-    ,'muminus-position-40000':3
-    ,'pionzero-position-Mom-41118':4
+    'electron-38323':0 #0 eminus-position-Mom-52294
+    #,'kplus-position-Mom-50588' #1
+    ,'pionminus-39144':1 #1 - kplus yerine bunu kullaniyoruz piminus-position-Mom-39144
+    ,'muon-62190':2 #2 muminus-position-40000
+    ,'pionzero-35674':3 #3 pionzero-position-Mom-41118
+    ,'proton-36793':4 #4 proton-position-Mom-20358
     }
 
 
@@ -56,7 +56,7 @@ def tf_parse_filename(filename):
             #pt_cloud = np.matmul(pt_cloud, A) + offsets
 
             # Create classification label
-            obj_type = filename_str.split('/')[-2]   # e.g., airplane, bathtub
+            obj_type = filename_str.split('/')[-2]
             label = np.zeros(5, dtype=np.float32)
             label[idx_lookup[obj_type]] = 1.0
 
@@ -78,9 +78,10 @@ def train_val_split(train_size=0.92):
     #        train_test_split(cur_files, train_size=train_size, random_state=0, shuffle=True)
     #    train.extend(cur_train)
     #    val.extend(cur_val)
-    base = '/home/yalmalioglu/dataset/500sp_evts/'
-    f_train = base+'train_files.csv'
-    f_test = base+'test_files.csv'
+    my_base ='/home/schefke/PIDNet/data/'
+    base = '/home/yalmalioglu/dataset5d/500sp_0padding_evts/' #changed by tdps to reflect the new directories
+    f_train = my_base+'train_files20k.csv'                  #same as previous comment
+    f_test = my_base+'test_files20k.csv'                    #same as previous comment
     df_train = pd.read_csv(f_train, header=None)
     df_test = pd.read_csv(f_test, header=None)
     

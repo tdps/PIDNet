@@ -22,7 +22,7 @@ tf.random.set_seed(0)
 
 # CLI
 PARSER = argparse.ArgumentParser(description='CLI for training pipeline')
-PARSER.add_argument('--batch_size', type=int, default=160, help='Batch size per step')
+PARSER.add_argument('--batch_size', type=int, default=64, help='Batch size per step')
 PARSER.add_argument('--epochs', type=int, default=50, help='Number of epochs')
 PARSER.add_argument('--learning_rate', type=float, default=1e-3, help='Initial learning rate')
 PARSER.add_argument('--init_weight', type=str, default=None, help='Path to initial weights')
@@ -141,14 +141,16 @@ for epoch in range(EPOCHS):
     val_acc.reset_states()
     val_prec.reset_states()
     val_recall.reset_states()
+    
+    #print('\n Reset Metrics')
 
     # Train on batches
     for x_train, y_train in train_ds:
         step_tic = time()
 
-        # print("x_train shape: ",x_train.shape)
-        # print("y_train shape: ",y_train.shape)
-
+        #print("x_train shape: ",x_train.shape)
+        #print("y_train shape: ",y_train.shape)
+        
         #train_logits, train_loss, mat_reg_loss = train_step(x_train, y_train)
         train_logits, train_loss = train_step(x_train, y_train)
 

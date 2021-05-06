@@ -214,7 +214,7 @@ class ResidualConvBlock(Layer):
 
 
 def get_model(bn_momentum):
-    pt_cloud = Input(shape=(None, 4), dtype=tf.float32, name='pt_cloud')    # BxNx3
+    pt_cloud = Input(shape=(None, 5), dtype=tf.float32, name='pt_cloud')    # BxNx3
 
     # Input transformer (B x N x 3 -> B x N x 3)
     #pt_cloud_transform = TNet(bn_momentum=bn_momentum)(pt_cloud)

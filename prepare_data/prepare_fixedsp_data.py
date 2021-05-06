@@ -19,7 +19,7 @@ for d in range(len(dss)):
     #ds = 'proton-position-Mom-20358'
     ds = dss[d]
     f_name = './dataset/{:s}.txt'.format(ds)
-    evt_folder_path = os.path.join('./dataset/500sp_evts/',ds)
+    evt_folder_path = os.path.join('/home/yalmalioglu/dataset5d/500sp_0padding_evts/',ds)
 
     #evt_dir = os.path.dirname(evt_folder_path)
     if not os.path.isdir(evt_folder_path):
