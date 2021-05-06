@@ -1,1 +1,2 @@
+#data directory
 /home/yalmalioglu/dataset5k
