@@ -107,5 +107,6 @@ def train_val_split(f_train, f_test, train_size=0.92):
     
     print(train.iloc[0])
     check = len(train)/(len(train)+len(val))
-    print("Training/Validtion split: {}".format())
+    print("Training/Validtion split: {}".format(check))
+    
     return train, val
