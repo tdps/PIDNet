@@ -38,7 +38,10 @@ LOG_DIR = 'logs'
 
 # Create datasets (.map() after .batch() due to lightweight mapping fxn)
 print('Creating train and val datasets...')
-TRAIN_FILES, VAL_FILES = train_val_split()
+f_train = '/home/yalmalioglu/dataset5d/1500sp_padding_evts/train_files35k_5p.csv'
+f_test = '/home/yalmalioglu/dataset5d/1500sp_padding_evts/test_files35k_5p.csv'
+
+TRAIN_FILES, VAL_FILES = train_val_split(f_train,f_test)
 #TEST_FILES = glob('ModelNet40/*/test/*.npy')   # only used to get length for comparison
 print('Number of training samples:', len(TRAIN_FILES))
 print('Number of validation samples:', len(VAL_FILES))

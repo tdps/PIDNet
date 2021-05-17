@@ -90,19 +90,22 @@ def train_val_split(train_size=0.92):
 
 
 def train_val_split(f_train, f_test, train_size=0.92):
-    
     if(!(os.path.isfile(f_test))):
         exit("Testing set is not a file: {}".format(f_test))
     
-    if(!(os.path.isfile(f_train)):
+    if(!(os.path.isfile(f_train))):
        exit("Training set is not a file: {}".format(f_train))
             
+       
     df_train = pd.read_csv(f_train, header=None)
     df_test = pd.read_csv(f_test, header=None)
     
-    train = base+df_train.iloc[:,1]
-    val = base+df_test.iloc[:,1]
+    split = train_size*df_train.shape[0]
+    
+    train = base+df_train.iloc[:split,1]
+    val = base+df_train.iloc[split+1:,1]
     
     print(train.iloc[0])
-    
+    check = len(train)/(len(train)+len(val))
+    print("Training/Validtion split: {}".format())
     return train, val
