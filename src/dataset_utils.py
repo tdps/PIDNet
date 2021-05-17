@@ -1,5 +1,6 @@
 import os.path
-import sys.exit
+import sys
+import string
 
 from glob import glob
 import numpy as np
@@ -89,23 +90,21 @@ def train_val_split(train_size=0.92):
     return train, val
 
 
-def train_val_split(f_train, f_test, train_size=0.92):
-    if(!(os.path.isfile(f_test))):
-        exit("Testing set is not a file: {}".format(f_test))
+def train_val_split(train_size=0.92,f_train, f_test):
+    if(not (os.path.isfile(f_test))):
+        sys.exit("Testing set is not a file: {}".format(f_test))
     
-    if(!(os.path.isfile(f_train))):
-       exit("Training set is not a file: {}".format(f_train))
+    if(not (os.path.isfile(f_train))):
+        sys.exit("Training set is not a file: {}".format(f_train))
             
        
     df_train = pd.read_csv(f_train, header=None)
     df_test = pd.read_csv(f_test, header=None)
     
-    split = train_size*df_train.shape[0]
-    
+    split = round(train_size*df_train.shape[0])
+    lastslash = f_train.rfind("/")
+    base = f_train[:lastslash]
     train = base+df_train.iloc[:split,1]
     val = base+df_train.iloc[split+1:,1]
-    
-    print(train.iloc[0])
-    check = len(train)/(len(train)+len(val))
-    print("Training/Validtion split: {}".format())
+
     return train, val
