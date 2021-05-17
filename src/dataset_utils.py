@@ -1,5 +1,7 @@
-from glob import glob
+import os.path
+import sys.exit
 
+from glob import glob
 import numpy as np
 import tensorflow as tf
 import pandas as pd
@@ -18,7 +20,7 @@ idx_lookup = {
 
 def get_dataset(files, BATCH_SIZE):
     AUTOTUNE = tf.data.experimental.AUTOTUNE
-
+    
     #list_files is not efficient on a large dataset.
     #it takes tens of minutes to start training!
     #ds = tf.data.Dataset.list_files(TRAIN_FILES)
@@ -71,23 +73,36 @@ def tf_parse_filename(filename):
 
 
 def train_val_split(train_size=0.92):
-    #train, val = [], []
-    #for obj_type in glob('ModelNet40/*/'):
-    #    cur_files = glob(obj_type + 'train/*.npy')
-    #    cur_train, cur_val = \
-    #        train_test_split(cur_files, train_size=train_size, random_state=0, shuffle=True)
-    #    train.extend(cur_train)
-    #    val.extend(cur_val)
+
     my_base ='/home/schefke/PIDNet/data/'
-    base = '/home/yalmalioglu/dataset5d/500sp_0padding_evts/' #changed by tdps to reflect the new directories
-    f_train = my_base+'train_files20k.csv'                  #same as previous comment
-    f_test = my_base+'test_files20k.csv'                    #same as previous comment
+    base = '/home/yalmalioglu/dataset5d/1500sp_padding_evts/' #changed by @tdps_ to reflect the new directories
+    f_train = base+'train_files35k_5p.csv'                  #same as previous comment
+    f_test = base+'test_files35k_5p.csv'                    #same as previous comment
     df_train = pd.read_csv(f_train, header=None)
     df_test = pd.read_csv(f_test, header=None)
     
     train = base+df_train.iloc[:,1]
     val = base+df_test.iloc[:,1]
     
-    #print(train.iloc[0])
+    print(train.iloc[0])
+    
+    return train, val
+
+
+def train_val_split(f_train, f_test, train_size=0.92):
+    
+    if(!(os.path.isfile(f_test))):
+        exit("Testing set is not a file: {}".format(f_test))
+    
+    if(!(os.path.isfile(f_train)):
+       exit("Training set is not a file: {}".format(f_train))
+            
+    df_train = pd.read_csv(f_train, header=None)
+    df_test = pd.read_csv(f_test, header=None)
+    
+    train = base+df_train.iloc[:,1]
+    val = base+df_test.iloc[:,1]
+    
+    print(train.iloc[0])
     
     return train, val
