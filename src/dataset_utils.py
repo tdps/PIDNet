@@ -106,5 +106,13 @@ def train_val_split(train_size=0.92,f_train, f_test):
     base = f_train[:lastslash]
     train = base+df_train.iloc[:split,1]
     val = base+df_train.iloc[split+1:,1]
+<<<<<<< HEAD
 
+=======
+    
+    print(train.iloc[0])
+    check = len(train)/(len(train)+len(val))
+    print("Training/Validtion split: {}".format(check))
+    
+>>>>>>> 028d5bc2cdf4d7692ea67c6e7b596634aa06c674
     return train, val
